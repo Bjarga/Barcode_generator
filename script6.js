@@ -75,13 +75,53 @@ genBtn.addEventListener("click", function () {
   let myFunc = (intArr) => Number(intArr);
   const intArr = Array.from(String(barcodeNum), myFunc);
 
+  //check barcode checknumber if barcode valid
+
+  const checkBarValid = [...intArr];
+  let num1 = 0;
+  for (let p = 0; p < checkBarValid.length - 1; p++) {
+    if (p === 0) {
+      num1 = num1 + checkBarValid[p] * 1;
+    } else if (p === 1) {
+      num1 = num1 + checkBarValid[p] * 3;
+    } else if (p === 2) {
+      num1 = num1 + checkBarValid[p] * 1;
+    } else if (p === 3) {
+      num1 = num1 + checkBarValid[p] * 3;
+    } else if (p === 4) {
+      num1 = num1 + checkBarValid[p] * 1;
+    } else if (p === 5) {
+      num1 = num1 + checkBarValid[p] * 3;
+    } else if (p === 6) {
+      num1 = num1 + checkBarValid[p] * 1;
+    } else if (p === 7) {
+      num1 = num1 + checkBarValid[p] * 3;
+    } else if (p === 8) {
+      num1 = num1 + checkBarValid[p] * 1;
+    } else if (p === 9) {
+      num1 = num1 + checkBarValid[p] * 3;
+    } else if (p === 10) {
+      num1 = num1 + checkBarValid[p] * 1;
+    } else if (p === 11) {
+      num1 = num1 + checkBarValid[p] * 3;
+    }
+  }
+  let checkNumMod = num1 % 10;
+  let finalCheckNum = 10 - checkNumMod;
+  console.log(finalCheckNum);
+  console.log(checkBarValid[12]);
+
   // Remove first number from barcode number and store in variable
   const firstNum = intArr.shift();
 
   barcodeNumber.textContent = " ";
 
   // check if number is a valid 13 digit number
-  if (intArr.length < 12 || (intArr.length > 12 && intArr != Number)) {
+  if (
+    finalCheckNum != checkBarValid[12] ||
+    intArr.length < 12 ||
+    (intArr.length > 12 && intArr != Number)
+  ) {
     alert("Not a valid 13 digit number");
 
     refresh();
